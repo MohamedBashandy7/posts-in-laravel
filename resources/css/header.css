@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+}
+header div ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+.auth {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.auth_info {
+    display: flex;
+    gap: 20px;
+}
