@@ -22,4 +22,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 Route::resource('posts', PostController::class);
-Route::get('/posts/{user_name}/{user_id?}', [PostController::class, 'show'])->name('show user post');
+Route::get('/posts/{user_name}/{user_id?}', [PostController::class, 'getAll'])->name('show user post');

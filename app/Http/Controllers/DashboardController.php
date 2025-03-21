@@ -8,7 +8,7 @@ use App\Http\Controllers\PostController;
 class DashboardController extends Controller {
     public function index() {
         $postController = new PostController(); // Create an instance of PostController
-        $posts = $postController->show(); // Call the show method to get posts
+        $posts = $postController->getAll(); // Call the show method to get posts
         $formFields = [
             [
                 'id' => 'title',
