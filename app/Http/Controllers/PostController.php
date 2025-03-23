@@ -98,12 +98,22 @@ class PostController extends Controller {
         $fields = $request->validate([
             'title' => ['required', 'max:255'],
             'body' => ['required'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:4000'],
         ]);
+        if ($request->hasFile('image')) {
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
+            }
+            $fields['image'] = Storage::disk('public')->put('/images', $request->file('image'));
+        }
         $post->update($fields);
         return \redirect()->route('dashboard')->with('success', 'Post updated successfully');
     }
     public function destroy(Post $post) {
         Gate::authorize('Modify', $post);
+        if ($post->image) {
+            Storage::disk('public')->delete($post->image);
+        }
         $post->delete();
         return back()->with('delete', 'Post deleted successfully');
     }
